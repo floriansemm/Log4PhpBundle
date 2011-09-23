@@ -1,0 +1,5 @@
+parameters:
+  php4log.logger.class: FS\Log4PhpBundle\Logger
+services:
+  php4log.logger:
+    class: %php4log.logger.class%
