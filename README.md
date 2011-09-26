@@ -47,18 +47,18 @@ Usage
 
 Use Log4Php without Symfony2 see [Log4php Quickstart]
 
-app/config.yml
+        app/config.yml
 
-fs_log4_php:
-  appenders:
-    default: 
-      class: LoggerAppenderFile
-      file: %kernel.root_dir%/logs/default.log
-      layout: 
-        class: LoggerLayoutTTCC
-  rootLogger: 
-    level: DEBUG
-    appenders: [ default ]
+        fs_log4_php:
+          appenders:
+            default: 
+              class: LoggerAppenderFile
+              file: %kernel.root_dir%/logs/default.log
+              layout: 
+                class: LoggerLayoutTTCC
+          rootLogger: 
+            level: DEBUG
+            appenders: [ default ]
 
 
 Sample config for a simple file-logger. Config for other logger-types coming soon.
