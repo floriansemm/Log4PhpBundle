@@ -11,29 +11,29 @@ Future releases provide a mail-interface for different mail-services.
 Installation
 ============
 
-1. Register bundle in AppKernel.php
+1.  Register bundle in AppKernel.php
 
-$bundles = array(
-    // ...
-    new FS\Log4PhpBundle\FSLog4PhpBundle(),
-    // ...
-);
+    $bundles = array(
+        // ...
+        new FS\Log4PhpBundle\FSLog4PhpBundle(),
+        // ...
+    );
 
-2. Add Bundle to autoload
+2.  Add Bundle to autoload
 
- $loader->registerNamespaces(array(
-            // ...
-            'FS' => __DIR__.'/../vendor/bundles',
-            // ...
-        ));
+    $loader->registerNamespaces(array(
+        // ...
+        'FS' => __DIR__.'/../vendor/bundles',
+        // ...
+    ));
 
-3. Download and unpack Log4Php to vendor
+3.  Download and unpack Log4Php to vendor
 
-Download [Log4php Download] an unzip the whole to vendor
+    Download [Log4php Download] an unzip the whole to vendor
 
-4. Add Log4Php to autoload 
+4.  Add Log4Php to autoload 
 
-AnnotationRegistry::registerFile(__DIR__.'/../vendor/log4php/src/main/php/Logger.php');
+    AnnotationRegistry::registerFile(__DIR__.'/../vendor/log4php/src/main/php/Logger.php');
 
 
 Usage
