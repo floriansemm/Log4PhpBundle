@@ -65,4 +65,4 @@ Sample config for a simple file-logger. Config for other logger-types coming soo
 
 
 [Log4php Quickstart]: http://logging.apache.org/log4php/quickstart.html
-[Log4php Download]: http://logging.apache.org/log4php/download.html
+[Log4php Download]: https://github.com/apache/log4php
