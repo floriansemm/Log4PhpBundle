@@ -53,9 +53,10 @@ Use Log4Php without Symfony2 see [Log4php Quickstart]
       appenders:
         default: 
           class: LoggerAppenderFile
-          file: %kernel.root_dir%/logs/default.log
           layout: 
             class: LoggerLayoutTTCC
+          options:
+            file: %kernel.root_dir%/logs/default.log  
       rootLogger: 
         level: DEBUG
         appenders: [ default ]
