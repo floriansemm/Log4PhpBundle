@@ -33,7 +33,9 @@ Installation
 
 3.  Download and unpack Log4Php to vendor
 
-    Download [Log4php Download] an unzip the whole to vendor
+Go to `src/vendor` and execute:
+
+    $ git clone [Log4php Git]
 
 4.  Add Log4Php to autoload 
 
@@ -67,3 +69,4 @@ Sample config for a simple file-logger. Config for other logger-types coming soo
 
 [Log4php Quickstart]: http://logging.apache.org/log4php/quickstart.html
 [Log4php Download]: https://github.com/apache/log4php
+[Log4php Git]: https://github.com/apache/log4php.git
