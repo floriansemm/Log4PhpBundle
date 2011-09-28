@@ -5,9 +5,8 @@ use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use FS\Log4PhpBundle\Wrapper\Log4PhpWrapper;
 
 /**
- * Description of Logger
  *
- * @author Florian
+ * @author Florian Semm
  */
 class Logger implements LoggerInterface {
     /**

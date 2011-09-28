@@ -6,14 +6,16 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Description of Configuration
+ * Configuration for Log4Php
  *
- * @author Florian
+ * @author Florian Semm
  */
 class Configuration implements ConfigurationInterface {
-    private $loggerName;
-
     
+    /**
+     *
+     * @return NodeInterface 
+     */
     public function getConfigTreeBuilder() {
         $treeBuilder = new TreeBuilder();
         

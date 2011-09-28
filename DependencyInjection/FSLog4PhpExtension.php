@@ -10,9 +10,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
 
 /**
- * Description of Log4PhpExtension
  *
- * @author Florian
+ * @author Florian Semm
  */
 class FSLog4PhpExtension extends Extension {
     public function load(array $configs, ContainerBuilder $container) {
@@ -23,7 +22,6 @@ class FSLog4PhpExtension extends Extension {
         $configuration = new Configuration();
 
         $config = $processor->process($configuration->getConfigTreeBuilder(), $configs);        
-
         $configs = $this->mergeOptions($configs);    
         
         $container->getDefinition('php4log.logger')->addMethodCall('configureLogger', $configs);
