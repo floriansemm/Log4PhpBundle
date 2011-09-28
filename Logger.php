@@ -16,6 +16,10 @@ class Logger implements LoggerInterface {
      */
     private $logger = null;
     
+    /**
+     *
+     * @var array 
+     */
     private $config = array();
         
     public function configureLogger(array $config) {
@@ -27,19 +31,19 @@ class Logger implements LoggerInterface {
     }
     
     public function alert($message, array $context = array()) {
-        
+        $this->logger->error($message);
     }
 
     public function crit($message, array $context = array()) {
-        
+        $this->logger->fatal($message);
     }
 
     public function debug($message, array $context = array()) {
-        
+        $this->logger->debug($message);
     }
 
     public function emerg($message, array $context = array()) {
-        
+        $this->logger->fatal($message);
     }
 
     public function err($message, array $context = array()) {          
@@ -47,15 +51,15 @@ class Logger implements LoggerInterface {
     }
 
     public function info($message, array $context = array()) {
-        
+        $this->logger->info($message);
     }
 
     public function notice($message, array $context = array()) {
-        
+        $this->logger->info($message);
     }
 
     public function warn($message, array $context = array()) {
-        
+        $this->logger->warn($message);
     }
 
 }
