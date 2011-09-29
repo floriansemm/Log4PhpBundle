@@ -14,7 +14,6 @@ Installation
 1.  Register bundle in AppKernel.php
 
         # app/AppKernel.php
-
         $bundles = array(
             // ...
             new FS\Log4PhpBundle\FSLog4PhpBundle(),
@@ -24,7 +23,6 @@ Installation
 2.  Add Bundle to autoload
 
         # app/autoload.php
-
         $loader->registerNamespaces(array(
             // ...
             'FS' => __DIR__.'/../vendor/bundles',
@@ -33,14 +31,13 @@ Installation
 
 3.  Download and unpack Log4Php to vendor
 
-Go to `src/vendor` and execute:
+    Go to `src/vendor` and execute:
 
-    $ git clone [Log4php Git]
+        $ git clone https://github.com/apache/log4php.git
 
 4.  Add Log4Php to autoload 
 
         # app/autoload.php
-
         AnnotationRegistry::registerFile(__DIR__.'/../vendor/log4php/src/main/php/Logger.php');
 
 
@@ -64,9 +61,9 @@ Use Log4Php without Symfony2 see [Log4php Quickstart]
         appenders: [ default ]
 
 
-Sample config for a simple file-logger. Config for other logger-types coming soon.
+Sample config for a simple file-logger. Config for other logger-types see the [wiki].
 
 
 [Log4php Quickstart]: http://logging.apache.org/log4php/quickstart.html
 [Log4php Download]: https://github.com/apache/log4php
-[Log4php Git]: https://github.com/apache/log4php.git
+[wiki]: https://github.com/floriansemm/Log4PhpBundle/wiki/Appenders
