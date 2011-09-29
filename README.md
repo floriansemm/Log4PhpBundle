@@ -14,6 +14,7 @@ Installation
 1.  Register bundle in AppKernel.php
 
         # app/AppKernel.php
+
         $bundles = array(
             // ...
             new FS\Log4PhpBundle\FSLog4PhpBundle(),
@@ -23,6 +24,7 @@ Installation
 2.  Add Bundle to autoload
 
         # app/autoload.php
+
         $loader->registerNamespaces(array(
             // ...
             'FS' => __DIR__.'/../vendor/bundles',
@@ -38,6 +40,7 @@ Installation
 4.  Add Log4Php to autoload 
 
         # app/autoload.php
+
         AnnotationRegistry::registerFile(__DIR__.'/../vendor/log4php/src/main/php/Logger.php');
 
 
