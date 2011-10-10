@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface {
                                         ->scalarNode('class')->end()
                                     ->end()    
                                 ->end()
-                                ->arrayNode('options')
+                                ->arrayNode('params')
                                     ->useAttributeAsKey('key')
                                     ->prototype('scalar')->end()
                                 ->end()   
