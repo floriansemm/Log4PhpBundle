@@ -45,6 +45,18 @@ class Configuration implements ConfigurationInterface {
                             ->arrayNode('appenders')->prototype('scalar')->end()                                    
                         ->end()
                      ->end()
+                ->end()
+                     ->arrayNode('loggers')                
+                        ->requiresAtLeastOneElement()
+                        ->useAttributeAsKey('name')
+                        ->prototype('array')                         
+                            ->children()
+                                ->scalarNode('level')->end()
+                                ->booleanNode('additivity')->defaultTrue()->end()    
+                                ->arrayNode('appenders')->prototype('scalar')->end()
+                            ->end()
+                         ->end() 
+                     ->end()
                  ->end();
         
         return $treeBuilder->buildTree();
