@@ -23,9 +23,9 @@ class FSLog4PhpExtension extends Extension {
 
         $config = $processor->process($configuration->getConfigTreeBuilder(), $configs);        
         $configs = $this->mergeOptions($configs);    
-        
+
         $container->getDefinition('php4log.logger')->addMethodCall('configureLogger', $configs);
-        
+              
         $container->setAlias('logger', 'php4log.logger');
         
 

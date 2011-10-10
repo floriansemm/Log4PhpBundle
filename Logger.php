@@ -29,6 +29,12 @@ class Logger implements LoggerInterface {
         $this->logger = Log4PhpWrapper::getRootLogger();
     }
     
+    public function getLogger($name) {
+        $this->logger = Log4PhpWrapper::getLogger($name);
+        
+        return $this;
+    }
+    
     public function alert($message, array $context = array()) {
         $this->logger->error($message);
     }
