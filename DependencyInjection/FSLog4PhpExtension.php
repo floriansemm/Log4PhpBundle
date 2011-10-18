@@ -22,26 +22,12 @@ class FSLog4PhpExtension extends Extension {
         $configuration = new Configuration();
 
         $config = $processor->process($configuration->getConfigTreeBuilder(), $configs);        
-        $configs = $this->mergeOptions($configs);    
 
         $container->getDefinition('php4log.logger')->addMethodCall('configureLogger', $configs);
-              
+        
         $container->setAlias('logger', 'php4log.logger');
         
 
-    }
-    
-    private function mergeOptions(array $configs) {        
-        foreach ($configs[0]['appenders'] as $appenderName => $appenderOptions) {
-            if (true === array_key_exists('options', $appenderOptions)) {
-                $specialApenderOptions = $appenderOptions['options'];
-                unset($appenderOptions['options']);
-                
-                $configs[0]['appenders'][$appenderName] = array_merge($specialApenderOptions, $appenderOptions);
-            }
-        }
-        
-        return $configs;
     }
 
     public function getAlias() {
