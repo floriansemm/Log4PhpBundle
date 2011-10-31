@@ -1,0 +1,40 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+
+{% block menu %}
+<span class="label">
+    <span class="icon"><img src="{{ asset('bundles/webprofiler/images/profiler/logger.png') }}" alt="Logger" /></span>
+    <strong>All Logs</strong>
+</span>
+{% endblock %}
+
+{% block panel %}
+    <h2>Logs</h2>
+
+    {% if collector.logs %}
+        
+        {% for logsByPrio in collector.logs|keys %}
+            <ul class="alt">
+            
+                <string>{{ logsByPrio }}</strong>
+                {% for message in collector.logs[logsByPrio] %}
+                    <li class="{{ cycle(['odd', 'even'], loop.index) }}{% if 'ERR' == message.priorityName or 'ERROR' == message.priorityName %} error{% endif %}">
+                        {{ message.message }}
+                        {% if message.context is defined and message.context is not empty %}
+                            <br />
+                            <small>
+                                <strong>Context</strong>: {{ message.context }}
+                            </small>
+                        {% endif %}
+                    </li>
+
+                {% endfor %}    
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>
+            <em>No logs available.</em>
+        </p>
+    {% endif %}
+
+{% endblock %}
