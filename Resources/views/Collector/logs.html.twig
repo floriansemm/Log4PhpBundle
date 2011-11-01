@@ -9,14 +9,10 @@
 {% endblock %}
 
 {% block panel %}
-    <h2>Logs</h2>
-
-    {% if collector.logs %}
-        
+    {% if collector.logs %}       
         {% for logsByPrio in collector.logs|keys %}
+            <h2>{{ logsByPrio }}</h2>
             <ul class="alt">
-            
-                <string>{{ logsByPrio }}</strong>
                 {% for message in collector.logs[logsByPrio] %}
                     <li class="{{ cycle(['odd', 'even'], loop.index) }}{% if 'ERR' == message.priorityName or 'ERROR' == message.priorityName %} error{% endif %}">
                         {{ message.message }}
@@ -27,7 +23,6 @@
                             </small>
                         {% endif %}
                     </li>
-
                 {% endfor %}    
             </ul>
         {% endfor %}
