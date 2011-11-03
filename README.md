@@ -66,6 +66,13 @@ Use Log4Php without Symfony2 see [Log4php Quickstart]
 
 Sample config for a simple file-logger. Config for other logger-types see the [wiki].
 
+Symfony-Profiler
+================
+
+The Bundle has it's own part in the profiler. This section is named "All Logs".
+
+In the main-panel there are different sections. Each section represent a log-level. So you can see all logs of the current request, group by the the log-level.
+
 
 [Log4php Quickstart]: http://logging.apache.org/log4php/quickstart.html
 [Log4php Download]: https://github.com/apache/log4php
