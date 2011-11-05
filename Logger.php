@@ -15,12 +15,6 @@ class Logger implements LoggerInterface {
      * @var LoggerRoot 
      */
     private $logger = null;
-    
-    /**
-     *
-     * @var array 
-     */
-    private $config = array();
         
     /**
      *
@@ -29,9 +23,7 @@ class Logger implements LoggerInterface {
     private $messages = array();
     
     public function configureLogger(array $config) {
-        $this->config = $config;
-        
-        Log4PhpWrapper::configure($this->config, 'LoggerConfiguratorPhp');
+        Log4PhpWrapper::configure($config, 'LoggerConfiguratorPhp');
         
         $this->logger = Log4PhpWrapper::getRootLogger();
     }
@@ -46,57 +38,58 @@ class Logger implements LoggerInterface {
         return $logger;
     }    
     
-    private function addMessage($message, $prio, $loggerName = 'root') {
+    private function addMessage($message, $priority, $loggerName = 'root') {
         $message = array(
                 'timestamp'    => time(),
                 'message'      => $message,
-                'priority'     => $prio,
-                'priorityName' => $prio,
+                'priority'     => $priority,
+                'priorityName' => $priority,
                 'context'      => $loggerName,
             );
         
-        if (false == array_key_exists($prio, $this->messages)) {
-            $this->messages[$prio] = array();
+        if (false == array_key_exists($priority, $this->messages)) {
+            $this->messages[$priority] = array();
         }
         
-        $messagesOfPrio = $this->messages[$prio];
+        $messagesOfPrio = $this->messages[$priority];
         $messagesOfPrio[] = $message;
-        $this->messages[$prio] = $messagesOfPrio;
+        $this->messages[$priority] = $messagesOfPrio;
+        ksort($this->messages);
     }
     
     public function alert($message, array $context = array()) {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'alert', $logger->getName());
         
-        $this->logger->error($message);
+        $logger->error($message);
     }
 
     public function crit($message, array $context = array()) {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'critical', $logger->getName());
         
-        $this->logger->fatal($message);
+        $logger->fatal($message);
     }
 
     public function debug($message, array $context = array()) {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'debug', $logger->getName());
         
-        $this->logger->debug($message);
+        $logger->debug($message);
     }
 
     public function emerg($message, array $context = array()) {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'emerg', $logger->getName());
         
-        $this->logger->fatal($message);
+        $logger->fatal($message);
     }
 
     public function err($message, array $context = array()) {  
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'error', $logger->getName());
         
-        $this->logger->error($message);
+        $logger->error($message);
     }
 
     public function info($message, array $context = array()) {
@@ -110,14 +103,14 @@ class Logger implements LoggerInterface {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'notice', $logger->getName());
         
-        $this->logger->info($message);
+        $logger->info($message);
     }
 
     public function warn($message, array $context = array()) {
         $logger = $this->getLogger($context);
         $this->addMessage($message, 'warning', $logger->getName());
         
-        $this->logger->warn($message);
+        $logger->warn($message);
     }
 
     public function getLogs() {
