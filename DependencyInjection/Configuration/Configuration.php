@@ -32,10 +32,22 @@ class Configuration implements ConfigurationInterface {
                         ->end()
                     ->end()
                     ->scalarNode('threshold')->defaultNull()->end()
-                    ->arrayNode('appenders')
+                    ->arrayNode('appenders')               
                         ->requiresAtLeastOneElement()
                         ->useAttributeAsKey('name')
-                        ->prototype('array')                         
+                        ->prototype('array')
+                            ->beforeNormalization()
+                                ->ifTrue(function($v){
+                                    return !array_key_exists('layout', $v);
+                                })
+                                ->then(function($v){
+                                    $defaultLayout = array();
+                                    $defaultLayout['class'] = 'LoggerLayoutTTCC';
+                                    $v['layout'] = $defaultLayout;
+
+                                    return $v;
+                                })
+                            ->end()                 
                             ->children()
                                 ->scalarNode('class')->end()
                                 ->arrayNode('layout')
@@ -47,7 +59,7 @@ class Configuration implements ConfigurationInterface {
                                         ->end()
                                     ->end()    
                                 ->end()
-                                ->arrayNode('filters')
+                                ->arrayNode('filters')                
                                     ->useAttributeAsKey('name')
                                     ->prototype('array')   
                                         ->children()
