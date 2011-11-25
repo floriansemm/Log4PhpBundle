@@ -79,6 +79,24 @@ There are also information about which logger was call. Mainly it's the root log
     
 The app option says which logger should be use for the application. If the logger is not configured/unknown, the root logger will be used.
 
+Costum Appenders
+================
+
+You can register your own services as an appender.
+
+		<service id="myapp" class="Acme\DemoBundle\MyService">
+			<tag name="logger.appender" id="costum.appender" />
+		</service>
+
+The service you want to register, needs the tag `logger.appender` and the option `id`. The option `id` represent the name of your appender. If you want to register the appender for a concrete logger (excepting root-logger), you can add the option `logger`.
+
+		<service id="myapp" class="Acme\DemoBundle\MyService">
+			<tag name="logger.appender" id="costum.appender" logger="my.logger" />
+		</service>
+
+If the logger is not found, the root logger will be used. How to setup your own logger, take a look at the cookbook or the documentation of Log4Php.
+
+
 [Log4php Quickstart]: http://logging.apache.org/log4php/quickstart.html
 [Log4php Download]: https://github.com/apache/log4php
 [wiki]: https://github.com/floriansemm/Log4PhpBundle/wiki/Appenders
