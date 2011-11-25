@@ -22,12 +22,23 @@ class Logger implements LoggerInterface {
      */
     private $messages = array();
     
+    private $container;
+    
+    public function __construct($container) {
+    	$this->container = $container;
+    }
+    
     public function configureLogger(array $config) {
         Log4PhpWrapper::configure($config, 'LoggerConfiguratorPhp');
         
         $this->logger = Log4PhpWrapper::getRootLogger();
     }
     
+    /**
+     * 
+     * @param array $context
+     * @return \Logger
+     */
     private function getLogger(array $context = array()) {
         $logger = $this->logger;
         
@@ -36,7 +47,26 @@ class Logger implements LoggerInterface {
         }
         
         return $logger;
-    }    
+    } 
+
+    /**
+     * 
+     * @param string $appenderName
+     * @param string $logger
+     */
+    public function addAppender($appenderId, $logger = '') {
+    	if (!$this->logger instanceof \Logger) {
+    		return;
+    	}
+
+    	$context = array();
+    	if ($logger != '') {
+    		$context['app'] = $logger;
+    	}
+    	
+    	$logger = $this->getLogger($context);
+    	$logger->addAppender($this->container->get($appenderId));
+    }
     
     private function addMessage($message, $priority, $loggerName = 'root') {
         $message = array(
