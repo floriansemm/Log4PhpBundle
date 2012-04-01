@@ -93,6 +93,8 @@ The service you want to register, needs the tag `logger.appender` and the option
 		<service id="myapp" class="Acme\DemoBundle\MyService">
 			<tag name="logger.appender" id="costum.appender" logger="my.logger" />
 		</service>
+		
+Your Service has to extends the \LoggerAppender class from Log4Php.
 
 If the logger is not found, the root logger will be used. How to setup your own logger, take a look at the cookbook or the documentation of Log4Php.
 
