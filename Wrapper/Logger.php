@@ -7,7 +7,7 @@ namespace FS\Log4PhpBundle\Wrapper;
  *
  * @author Florian Semm
  */
-class Log4PhpWrapper extends \Logger {
+class Logger extends \Logger {
     
 }
 

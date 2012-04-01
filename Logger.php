@@ -1,15 +1,19 @@
 <?php
 namespace FS\Log4PhpBundle;
 
+use FS\Log4PhpBundle\Wrapper\LoggerMDC;
+
+use FS\Log4PhpBundle\Wrapper\LoggerNDC;
+
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
-use FS\Log4PhpBundle\Wrapper\Log4PhpWrapper;
+use FS\Log4PhpBundle\Wrapper\Logger as Log4phpLogger;
 
 /**
  *
  * @author Florian Semm
  */
-class Logger implements LoggerInterface {
+class Logger implements ApplicationLoggerInterface {
     /**
      *
      * @var LoggerRoot 
@@ -29,9 +33,9 @@ class Logger implements LoggerInterface {
     }
     
     public function configureLogger(array $config) {
-        Log4PhpWrapper::configure($config, 'LoggerConfiguratorPhp');
+        Log4phpLogger::configure($config, 'LoggerConfiguratorPhp');
         
-        $this->logger = Log4PhpWrapper::getRootLogger();
+        $this->logger = Log4phpLogger::getRootLogger();
     }
     
     /**
@@ -43,12 +47,26 @@ class Logger implements LoggerInterface {
         $logger = $this->logger;
         
         if (array_key_exists('app', $context)) {
-            $logger = Log4PhpWrapper::getLogger($context['app']);
+            $logger = Log4phpLogger::getLogger($context['app']);
         }
         
         return $logger;
     } 
 
+    /**
+     * @return LoggerMDC
+     */
+    public function getLoggerMDC() {
+    	return new LoggerMDC();
+    }
+    
+    /**
+     * @return LoggerNDC
+     */
+    public function getLoggerNDC() {
+		return new LoggerNDC();    	
+    }    
+    
     /**
      * 
      * @param string $appenderName
