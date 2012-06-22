@@ -33,7 +33,7 @@ class Logger implements ApplicationLoggerInterface {
     }
     
     public function configureLogger(array $config) {
-        Log4phpLogger::configure($config, 'LoggerConfiguratorPhp');
+        Log4phpLogger::configure($config);
         
         $this->logger = Log4phpLogger::getRootLogger();
     }
