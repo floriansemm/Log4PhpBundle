@@ -21,6 +21,12 @@ class Configuration implements ConfigurationInterface {
         
         $rootNode = $treeBuilder->root('fs_php4_log', 'array');
         $rootNode->children()
+        			->arrayNode('viewer')
+        				->children()
+	        				->booleanNode('view_all_logs')->cannotBeEmpty()->end()
+	        				->arrayNode('log_files')->end()
+        				->end()
+        			->end()
                     ->arrayNode('renderers')
                         ->defaultNull()
                         ->useAttributeAsKey('name')
