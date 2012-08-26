@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface {
 		        			})
 		        			->then(function($v){
 		        				$v['log_files'] = array();
+		        				return $v;
 		        			})
 		        			->end()        			
         				->children()
