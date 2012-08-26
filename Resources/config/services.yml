@@ -1,11 +1,12 @@
 parameters:
   log4php.logger.class: FS\Log4PhpBundle\Logger
+  log4php.viewalllogs_datacollector.class: FS\Log4PhpBundle\DataCollector\ViewLogsDataCollector
 services:
   log4php.logger:
     class: %log4php.logger.class%
     arguments: [ @service_container ]
   log4php.data_collector.alllogs:
-    class: FS\Log4PhpBundle\DataCollector\AllLogsDataCollector
+    class: %log4php.viewalllogs_datacollector.class%
     arguments: [ @logger ]
     tags:
       - { name: data_collector, template: "FSLog4PhpBundle:Collector:logs", id: "alllogs" }    

@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollector;
  *
  * @author Florian Semm
  */
-class AllLogsDataCollector extends DataCollector {
+class ViewLogsDataCollector extends DataCollector {
     
     /**
      *
