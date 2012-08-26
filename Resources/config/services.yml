@@ -7,7 +7,6 @@ services:
     arguments: [ @service_container ]
   log4php.data_collector.alllogs:
     class: %log4php.viewalllogs_datacollector.class%
-    arguments: [ @logger ]
     tags:
       - { name: data_collector, template: "FSLog4PhpBundle:Collector:logs", id: "alllogs" }    
   
