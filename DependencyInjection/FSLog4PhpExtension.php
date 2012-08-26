@@ -34,8 +34,6 @@ class FSLog4PhpExtension extends Extension {
         $container->getDefinition('log4php.logger')->addMethodCall('configureLogger', array($config));
         
         $container->setAlias('logger', 'log4php.logger');
-        
-
     }
 
     public function getAlias() {
