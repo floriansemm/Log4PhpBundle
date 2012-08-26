@@ -18,18 +18,16 @@ class AllLogsDataCollector extends DataCollector {
      */
     private $logger;
     
-    public function __construct($logger) {
-        $this->logger = $logger;
-    }
+    private $logFiles = array();
     
     public function collect(Request $request, Response $response, \Exception $exception = null) {
-        if ($this->logger instanceof \FS\Log4PhpBundle\Logger) {
-            $this->data = array(
-                'logs' => $this->logger->getLogs()
-            );
-        } else {
-            $this->data = array();
-        }
+    	foreach ($this->logFiles as $logFile) {
+    		$logContent = file_get_contents($logFile);
+    	}
+    }
+    
+    public function setLogFile(array $logFiles) {
+    	$this->logFiles = $logFiles;
     }
     
     public function getLogs() {

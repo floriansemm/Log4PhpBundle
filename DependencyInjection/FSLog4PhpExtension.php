@@ -23,6 +23,14 @@ class FSLog4PhpExtension extends Extension {
 
         $config = $processor->process($configuration->getConfigTreeBuilder(), $configs);        
 
+        $viewLogFiles = array();
+		foreach ($config['appenders'] as $appenderName => $appenderConfig) {
+			if (isset($appenderConfig['params']) && isset($appenderConfig['params']['file'])) {
+				$viewLogFiles[$appenderName] = $appenderConfig['params']['file'];
+			}
+		}
+        
+		$container->getDefinition('log4php.data_collector.alllogs')->addMethodCall('setLogFile', array($viewLogFiles));
         $container->getDefinition('log4php.logger')->addMethodCall('configureLogger', array($config));
         
         $container->setAlias('logger', 'log4php.logger');

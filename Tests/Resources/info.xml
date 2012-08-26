@@ -1,0 +1,36 @@
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="995" timestamp="1345986293867">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="997" timestamp="1345986439442">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="997" timestamp="1345986440144">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="997" timestamp="1345986441312">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="997" timestamp="1345986441962">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
+<log4php:eventSet xmlns:log4php="http://logging.apache.org/log4php/" version="0.3" includesLocationInfo="true">
+<log4php:event logger="root" level="INFO" thread="997" timestamp="1345986442623">
+<log4php:message><![CDATA[Matched route "FSBlogBundle_homepage" (parameters: "_controller": "FS\BlogBundle\Controller\DefaultController::indexAction", "_route": "FSBlogBundle_homepage")]]></log4php:message>
+<log4php:locationInfo class="FS\Log4PhpBundle\Logger" file="/var/www/symfony-sandbox/vendor/bundles/FS/Log4PhpBundle/Logger.php" line="147" method="info" />
+</log4php:event>
+</log4php:eventSet>
