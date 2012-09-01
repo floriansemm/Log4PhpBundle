@@ -6,7 +6,6 @@ Symfony2-Project.
 
 [Log4Php]: http://logging.apache.org/log4php/
 
-Future releases provide a mail-interface for different mail-services. 
 
 Installation
 ============
