@@ -12,18 +12,32 @@ class LogReader {
 	const ROOT_NODE_TAG_NAME = 'root';
 	
 	public function __construct($logFile) {
-		$this->logContent = $logContent = file_get_contents($logFile);
+		$this->logContent = @file_get_contents($logFile);
 		
+		if ($this->logContent == false) {
+			throw new \RuntimeException(sprintf('Cant read file %s', $logFile));
+		}
+
+		libxml_use_internal_errors(true);
 		$dom = new \DOMDocument('1.0', 'utf-8');
+		$dom->strictErrorChecking = false;
 		$dom->recover = true;
-		$dom->loadXML($this->addRootNode());
-			
+		$loaded = @$dom->loadXML($this->addRootNode());
 		$this->logFile = new LogFile($logFile);
+		
+		if ($loaded) {
+			$this->logFile = $this->parseXML($dom, $this->logFile);
+		}	
+	}
+	
+	private function parseXML(\DOMDocument $dom, LogFile $logfile) {
 		foreach ($this->getChildLogEntries($dom) as $logEntryXml) {
 			if (preg_match('/log4php:eventSet/', $logEntryXml->getNodePath())) {
-				$this->logFile->addLogEntry(new LogEntry($logEntryXml));
+				$logfile->addLogEntry(new LogEntry($logEntryXml));
 			}
 		}
+		
+		return $logfile;
 	}
 	
 	private function getChildLogEntries(\DOMDocument $dom) {
