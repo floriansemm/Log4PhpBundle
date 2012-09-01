@@ -64,8 +64,10 @@ class LogEntry {
 		return $this->timestamp;
 	}
 
-	public function getLogDate() {
-		return date('H:i:s d.m.Y', $this->timestamp);
+	public function getDate() {
+		$timestamp = $this->timestamp / 1000;
+		
+		return date('H:i:s d.m.Y', $timestamp);
 	}	
 	
 }

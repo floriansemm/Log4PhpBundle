@@ -9,12 +9,22 @@
 {% endblock %}
 
 {% block panel %}
+{# 	<link rel="stylesheet" href="{{ asset('bundles/fslog4php/style/jquery.dataTables.css') }}" />#}
+	<script src="{{ asset('bundles/fslog4php/js/jquery.js') }}"></script>
+	<script src="{{ asset('bundles/fslog4php/js/jquery.dataTables.js') }}"></script>
+	<script>
+		$(document).ready(function() {
+		    $('.logs').dataTable();
+		} );
+	</script>
+	
     {% if collector.logs %}
     	{% for logfile in collector.logs %}
 	    	<p><h3>{{ logfile.getLogFileName() }}</h3></p>
-	    	<table>
+	    	<table class="logs">
 	           	<thead>
 	           		<tr>
+	           			<th>Time</th>
 	           			<th>Logger</th>
 	           			<th>Level</th>
 	           			<th>Message</th>
@@ -23,14 +33,15 @@
 	           	<tbody>
 			        {% for logEntry in logfile.getLogEntries() %}
 			        	<tr>
+			        		<td>{{ logEntry.getDate() }}</td>
 							<td>{{ logEntry.getLogger() }}</td>
 							<td>{{ logEntry.getLevel() }}</td>
-							<td>{{ logEntry.getMessage() }}</</td>        	
-			        	
+							<td>{{ logEntry.getMessage() }}</td>        	
 			        	</tr>
 			        {% endfor %}
 	        	</tbody>
 	        </table>
+	        <br />
         {% endfor %}
     {% else %}
         <p>
