@@ -9,22 +9,28 @@
 {% endblock %}
 
 {% block panel %}
-    {% if collector.logs %}       
-        {% for logsByPrio in collector.logs|keys %}
-            <h2>{{ logsByPrio }}</h2>
-            <ul class="alt">
-                {% for message in collector.logs[logsByPrio] %}
-                    <li class="{{ cycle(['odd', 'even'], loop.index) }}{% if 'ERR' == message.priorityName or 'ERROR' == message.priorityName %} error{% endif %}">
-                        {{ message.message }}
-                        {% if message.context is defined and message.context is not empty %}
-                            <br />
-                            <small>
-                                <strong>Context</strong>: {{ message.context }}
-                            </small>
-                        {% endif %}
-                    </li>
-                {% endfor %}    
-            </ul>
+    {% if collector.logs %}
+    	{% for logfile in collector.logs %}
+	    	<p><h3>{{ logfile.getLogFileName() }}</h3></p>
+	    	<table>
+	           	<thead>
+	           		<tr>
+	           			<th>Logger</th>
+	           			<th>Level</th>
+	           			<th>Message</th>
+	           		</tr>
+	           	</thead>
+	           	<tbody>
+			        {% for logEntry in logfile.getLogEntries() %}
+			        	<tr>
+							<td>{{ logEntry.getLogger() }}</td>
+							<td>{{ logEntry.getLevel() }}</td>
+							<td>{{ logEntry.getMessage() }}</</td>        	
+			        	
+			        	</tr>
+			        {% endfor %}
+	        	</tbody>
+	        </table>
         {% endfor %}
     {% else %}
         <p>

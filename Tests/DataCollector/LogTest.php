@@ -2,23 +2,21 @@
 
 namespace FS\Log4PhpBundle\Tests\DataCollector;
 
-use FS\Log4PhpBundle\DataCollector\Log;
+use FS\Log4PhpBundle\DataCollector\LogReader;
 
 /**
  *  test case.
  */
 class LogTest extends \PHPUnit_Framework_TestCase {
 
-	private function getLogContent($filename) {
+	private function getLogFile($filename) {
 		$logContent = dirname(__FILE__).'/../Resources/'.$filename;
-		$logContent = file_get_contents($logContent);
 		return $logContent;
 	}
 	
 	public function testGetLogEntries_ValidInputLogContent() {
-		$logContent = $this->getLogContent('info.xml');
-		$log = new Log($logContent);
-		$this->assertEquals(6, count($log->getLogEntries()));
+		$log = new LogReader($this->getLogFile('info.xml'));
+		$this->assertEquals(2, count($log->getLogFile()->getLogEntries()));
 	}
 	
 }

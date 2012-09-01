@@ -64,7 +64,9 @@ class LogEntry {
 		return $this->timestamp;
 	}
 
-	
+	public function getLogDate() {
+		return date('H:i:s d.m.Y', $this->timestamp);
+	}	
 	
 }
 

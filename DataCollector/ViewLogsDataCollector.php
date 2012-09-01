@@ -21,8 +21,12 @@ class ViewLogsDataCollector extends DataCollector {
     private $logFiles = array();
     
     public function collect(Request $request, Response $response, \Exception $exception = null) {
+    	
+    	$logs = array();
     	foreach ($this->logFiles as $logFile) {
-    		$logContent = file_get_contents($logFile);
+    		$logReader = new LogReader($logFile);
+    		
+    		$this->data['logs'][] = $logReader->getLogFile();
     	}
     }
     
