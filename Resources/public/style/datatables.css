@@ -1,0 +1,11 @@
+.dataTables_wrapper {
+	font-size: small;
+}
+
+.paging_two_button {
+	float:right;
+}
+
+.paging_two_button a {
+	padding-left: 10px;
+}
