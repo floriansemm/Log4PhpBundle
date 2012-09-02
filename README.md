@@ -1,8 +1,9 @@
 Log4PhpBundle
 ==================================
 
-This is an experimental Bundle whitch supports the [Log4Php] in your 
-Symfony2-Project.
+This is an experimental Bundle whitch supports the [Log4Php] in your Symfony2-Project.
+
+It also includes a log-reader
 
 [Log4Php]: http://logging.apache.org/log4php/
 
@@ -51,6 +52,9 @@ Use Log4Php without Symfony2 see [Log4php Quickstart]
     app/config.yml
 
     fs_log4_php:
+      viewer:
+        view_all_logs: false
+        log_files: [ %kernel.root_dir%/logs/info.log, %kernel.root_dir%/logs/debug.log ]    
       appenders:
         default: 
           class: LoggerAppenderFile
@@ -70,13 +74,12 @@ Symfony-Profiler
 
 The Bundle has it's own part in the profiler. This section is named "All Logs".
 
-In the main-panel there are different sections. Each section represent a log-level. So you can see all logs of the current request, group by the the log-level.
+In the YAML-configuration you can configure which log-files should be read. There are two options:
 
-There are also information about which logger was call. Mainly it's the root logger. You can setup your own logger and pass it as a argument to the log-method:
+    - view_all_logs: [true|false] the datacollector reads all log-file in the default log-directory. 
+    - log_files: array if view_all_logs is true, this array will be overwritten, otherwise this array contains
+    the log-file which should be read.
 
-    $this->get('logger')->info('MyApp was called', array('app'=>'my.app'));
-    
-The app option says which logger should be use for the application. If the logger is not configured/unknown, the root logger will be used.
 
 Costum Appenders
 ================
