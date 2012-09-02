@@ -2,13 +2,14 @@
 namespace FS\Log4PhpBundle\DataCollector;
 
 class LogEntry {
-	private $node = null;
-	
 	private $message = '';
 	private $logger = '';
 	private $level = '';
 	private $timestamp = 0;
 	
+	/**
+	 * @param \DOMNode $node
+	 */
 	public function __construct(\DOMNode $node) {
 		if ($event = $this->getLogEvent($node)) {
 			$this->logger = $this->logAttributes($event, 'logger');
@@ -72,6 +73,9 @@ class LogEntry {
 		return $this->timestamp;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getDate() {
 		$timestamp = $this->timestamp / 1000;
 		

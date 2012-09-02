@@ -2,15 +2,25 @@
 namespace FS\Log4PhpBundle\DataCollector;
 
 class LogReader {
+	
+	/**
+	 * 
+	 * @var string
+	 */
 	private $logContent = '';
 	
 	/**
 	 * @var LogFile
 	 */
-	private $logFile = array();
+	private $logFile = null;
 	
 	const ROOT_NODE_TAG_NAME = 'root';
 	
+	/**
+	 * 
+	 * @param string $logFile
+	 * @throws \RuntimeException if log-file cannot be read
+	 */
 	public function __construct($logFile) {
 		$this->logContent = @file_get_contents($logFile);
 		
@@ -53,7 +63,6 @@ class LogReader {
 	}
 	
 	/**
-	 * 
 	 * @return \FS\Log4PhpBundle\DataCollector\LogFile
 	 */
 	public function getLogFile() {

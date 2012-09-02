@@ -12,12 +12,6 @@ use Symfony\Component\HttpKernel\DataCollector\DataCollector;
  */
 class ViewLogsDataCollector extends DataCollector {
     
-    /**
-     *
-     * @var \FS\Log4PhpBundle\Logger 
-     */
-    private $logger;
-    
     private $logFiles = array();
     
     public function collect(Request $request, Response $response, \Exception $exception = null) {
@@ -30,10 +24,16 @@ class ViewLogsDataCollector extends DataCollector {
     	}
     }
     
+    /**
+     * @param array $logFiles
+     */
     public function setLogFile(array $logFiles) {
     	$this->logFiles = $logFiles;
     }
     
+    /**
+     * @return array
+     */
     public function getLogs() {
         return isset($this->data['logs'])? $this->data['logs']:array();
     }
