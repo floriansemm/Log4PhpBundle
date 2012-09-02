@@ -11,12 +11,20 @@ class LogEntry {
 	
 	public function __construct(\DOMNode $node) {
 		if ($event = $this->getLogEvent($node)) {
-			$this->logger = $event->attributes->getNamedItem('logger')->textContent;
-			$this->level = $event->attributes->getNamedItem('level')->textContent;
-			$this->timestamp = $event->attributes->getNamedItem('timestamp')->textContent;			
+			$this->logger = $this->logAttributes($event, 'logger');
+			$this->level = $this->logAttributes($event, 'level');
+			$this->timestamp = $this->logAttributes($event, 'timestamp');			
 		}
 		
 		$this->message = $this->getLogMessage($event);
+	}
+	
+	private function logAttributes($event, $attributeName) {
+		if ($attribute = $event->attributes->getNamedItem($attributeName)) {
+			return $attribute->textContent;
+		}
+		
+		return '';
 	}
 	
 	private function getLogMessage(\DOMNode $node) {
