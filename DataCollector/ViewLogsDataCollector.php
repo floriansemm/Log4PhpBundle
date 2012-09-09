@@ -19,7 +19,6 @@ class ViewLogsDataCollector extends DataCollector {
     	$logs = array();
     	foreach ($this->logFiles as $logFile) {
     		$logReader = new LogReader($logFile);
-    		
     		$this->data['logs'][] = $logReader->getLogFile();
     	}
     }

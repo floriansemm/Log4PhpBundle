@@ -11,13 +11,10 @@ class LogEntry {
 	 * @param \DOMNode $node
 	 */
 	public function __construct(\DOMNode $node) {
-		if ($event = $this->getLogEvent($node)) {
-			$this->logger = $this->logAttributes($event, 'logger');
-			$this->level = $this->logAttributes($event, 'level');
-			$this->timestamp = $this->logAttributes($event, 'timestamp');			
-		}
-		
-		$this->message = $this->getLogMessage($event);
+		$this->logger = $this->logAttributes($node, 'logger');
+		$this->level = $this->logAttributes($node, 'level');
+		$this->timestamp = $this->logAttributes($node, 'timestamp');
+		$this->message = $this->getLogMessage($node);
 	}
 	
 	private function logAttributes($event, $attributeName) {

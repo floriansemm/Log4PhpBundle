@@ -43,7 +43,7 @@ class LogReader {
 	private function parseXML(\DOMDocument $dom, LogFile $logfile) {
 		foreach ($this->getChildLogEntries($dom) as $logEntryXml) {
 			if (preg_match('/log4php:eventSet/', $logEntryXml->getNodePath())) {
-				$logfile->addLogEntry(new LogEntry($logEntryXml));
+				$logfile->addLogEvent(new LogEvent($logEntryXml));
 			}
 		}
 		

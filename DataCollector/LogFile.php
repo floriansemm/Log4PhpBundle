@@ -2,7 +2,7 @@
 namespace FS\Log4PhpBundle\DataCollector;
 
 class LogFile {
-	private $logEntries = array();
+	private $logEvents = array();
 	private $logFileName = '';
 
 	/**
@@ -13,17 +13,24 @@ class LogFile {
 	}
 	
 	/**
-	 * @param LogEntry $entry
+	 * @param LogEntry $event
 	 */
-	public function addLogEntry(LogEntry $entry) {
-		$this->logEntries[] = $entry;
+	public function addLogEvent(LogEvent $event) {
+		$this->logEvents[] = $event;
 	}
 	
 	/**
 	 * @return array
 	 */
 	public function getLogEntries() {
-		return $this->logEntries;
+		$logEntries = array();
+		
+		foreach ($this->logEvents as $event) {
+			$logEntries = array_merge($logEntries, $event->getLogEntries());
+		}
+		
+		
+		return $logEntries;
 	}
 
 	/**

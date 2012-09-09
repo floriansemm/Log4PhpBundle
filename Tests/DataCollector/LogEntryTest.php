@@ -18,8 +18,9 @@ class LogEntryTest extends \PHPUnit_Framework_TestCase {
 		$dom->loadXML($logContent);
 		
 		$eventSet = $dom->getElementsByTagName('root')->item(0)->childNodes->item(1);
+		$logEvent = $eventSet->childNodes->item(1);
 		
-		return $eventSet;
+		return $logEvent;
 	}
 	
 	public function testGetAllLogInformations_ValidInputLogContent() {

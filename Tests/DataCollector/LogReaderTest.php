@@ -16,7 +16,7 @@ class LogReaderTest extends \PHPUnit_Framework_TestCase {
 	
 	public function testGetLogEntries_ValidInputLogContent() {
 		$log = new LogReader($this->getLogFile('info.xml'));
-		$this->assertEquals(2, count($log->getLogFile()->getLogEntries()));
+		$this->assertEquals(4, count($log->getLogFile()->getLogEntries()));
 	}
 	
 	/**
