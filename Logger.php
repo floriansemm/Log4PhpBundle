@@ -46,8 +46,8 @@ class Logger implements ApplicationLoggerInterface {
     private function getLogger(array $context = array()) {
         $logger = $this->logger;
         
-        if (array_key_exists('app', $context)) {
-            $logger = Log4phpLogger::getLogger($context['app']);
+        if (array_key_exists('logger', $context)) {
+            $logger = Log4phpLogger::getLogger($context['logger']);
         }
         
         return $logger;
