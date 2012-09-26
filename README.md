@@ -33,7 +33,7 @@ Installation
 
 3.  Download and unpack Log4Php to vendor
 
-    Go to `src/vendor` and execute:
+    Go to `src/vendor/bundles` and execute:
 
         $ git clone https://github.com/apache/log4php.git
 
